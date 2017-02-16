@@ -1,10 +1,10 @@
-// interval tree using function insert ,search ,delete,print
+// interval tree operation function insert ,search ,delete,print
 
 #include<bits/stdc++.h>
 using namespace std;
 # define pp pair<int,int>
 
-class node          //interval node
+class node         							 // interval node
 {
 
    public:
@@ -13,7 +13,7 @@ class node          //interval node
     node*left;
     node*right;
 };
-node* newnodeform(pp *interval)  //formation of new node and assign pointer and interval
+node* newnodeform(pp *interval)  					//formation of new node and assign pointer and interval
 {
     node* newnode=new node();
     newnode->left=0;
@@ -21,7 +21,7 @@ node* newnodeform(pp *interval)  //formation of new node and assign pointer and 
     newnode->data=*interval;
     newnode->maxn=interval->second;
 }
-node* insertnode(node* root,pp *interval)   // insertion of new node form into interval tree
+node* insertnode(node* root,pp *interval)   				// insertion of new node form into interval tree
 {
     int value=interval->first;
     if(root==0)
@@ -36,7 +36,7 @@ node* insertnode(node* root,pp *interval)   // insertion of new node form into i
             root->maxn=interval->second;
             return(root);
 }
- void print(node*root)              // print the interval tree
+ void print(node*root)              					// print the interval tree
  {
      if(root==0)
         return ;
@@ -47,7 +47,7 @@ node* insertnode(node* root,pp *interval)   // insertion of new node form into i
      }
  }
 
-pp *searchinterval(node*root,pp*pairf)       //search an interval in a interval tree
+pp *searchinterval(node*root,pp*pairf)     				  //search an interval in a interval tree
 {
     if(root==0)
     return 0 ;
@@ -59,20 +59,20 @@ pp *searchinterval(node*root,pp*pairf)       //search an interval in a interval 
             return searchinterval(root->left,pairf);
         return searchinterval(root->right,pairf);
 }
-  node* moveright(node* nnode)      // move right in an interval tree
+  node* moveright(node* nnode)      					// move right in an interval tree
 {
 	if(nnode->right == 0)return nnode;
 	return moveright(nnode->right);
 }
 
-node* moveleft(node* nnode)          // move left in an interval tree
+node* moveleft(node* nnode)         					 // move left in an interval tree
 {
 	if(nnode->left == 0)return nnode;
 	return moveleft(nnode->left);
 }
 
 
-void deleteinterval(node*root,pp* interval)    //delete ab interval from an interval tree
+void deleteinterval(node*root,pp* interval)   				 //delete an interval from an interval tree
 {
 
     if(root->data.first==interval->first&&root->data.second==interval->second)
@@ -111,6 +111,7 @@ void deleteinterval(node*root,pp* interval)    //delete ab interval from an inte
 
 int main()
 {
+
     int n;
     cin>>n;
     pp a[n];
@@ -129,12 +130,19 @@ int main()
      cout<<"interval tree form after insertion is "<<endl;
      print(root);
      cout<<endl;
-    int u=0;
+	
+	int p,b;
+ cin>>p>>b;       							// input interval for deletion
+pp  f =make_pair(p,b);
+  deleteinterval(root,&f);
+  cout<<"("<<p<<","<<b<<") is deleted"<<endl;
+	
+    int u=0;          							 // Search two interval
     while(u<2)
     {
 
   int p,b;
-  cin>>p>>b;          //input interval for search
+  cin>>p>>b;         							 //input interval for search
  pp f =make_pair(p,b);
 
 
@@ -145,16 +153,12 @@ int main()
  cout<<"("<<p<<","<<b<<") is "<<"interval match  to("<< overlap->first<<","<<overlap->second<<")"<<endl;
  u++;
     }
-int p,b;
- cin>>p>>b;       // input interval for deletion
-pp  f =make_pair(p,b);
-  deleteinterval(root,&f);
-  cout<<"interval tree form after deletion of ("<<p<<","<<b<<") is "<<endl;
-  print (root);
+
 
 }
 
-
+// (15,20) is interval for deletion
+// (14,16) and (21,23) are interval for search
 /*
 Input
 6
@@ -164,8 +168,9 @@ Input
 5 20
 12 15
 30 40
+15 20                          
 14 16
 21 23
-15 20
+
 */
 

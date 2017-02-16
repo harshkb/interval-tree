@@ -113,6 +113,7 @@ int main()
 {
 
     int n;
+	cout<<"Enter the number of interval to insert and the interval"<<endl;
     cin>>n;
     pp a[n];
     int i=0;
@@ -144,8 +145,6 @@ pp  f =make_pair(p,b);
   int p,b;
   cin>>p>>b;         							 //input interval for search
  pp f =make_pair(p,b);
-
-
   pp *overlap =searchinterval(root,&f);
   if(overlap==0)
     cout<<"not found"<<endl;
@@ -153,7 +152,38 @@ pp  f =make_pair(p,b);
  cout<<"("<<p<<","<<b<<") is "<<"interval match  to("<< overlap->first<<","<<overlap->second<<")"<<endl;
  u++;
     }
-
+ cout<<"Press 0 to exit, 1 to insert , 2 to delete , 3 to search"<<endl;
+	 int input=5;
+	while(input!=0)
+	{	cin>>input;
+	      if(input==1)
+	      {
+	      		int p,b;
+ 			cin>>p>>b;       		
+			pp  f =make_pair(p,b);
+		      root=insertnode(root,&f);
+	      }
+	 	if(input==2)
+		{
+			int p,b;
+			 cin>>p>>b;       					
+			pp  f =make_pair(p,b);
+ 			 deleteinterval(root,&f);
+			  cout<<"("<<p<<","<<b<<") is deleted"<<endl;
+		}
+	 	 if(input ==3)
+	  	{
+	      		int p,b;
+			  cin>>p>>b;         							 
+			 pp f =make_pair(p,b);
+			  pp *overlap =searchinterval(root,&f);
+			  if(overlap==0)
+			    cout<<"not found"<<endl;
+			  else
+			 cout<<"("<<p<<","<<b<<") is "<<"interval match  to("<< overlap->first<<","<<overlap->second<<")"<<endl;
+	  
+	 	 }
+	}
 
 }
 

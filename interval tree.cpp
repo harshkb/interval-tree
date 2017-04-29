@@ -131,13 +131,13 @@ int main()
      cout<<"interval tree form after insertion is "<<endl;
      print(root);
      cout<<endl;
-	
+
 	int p,b;
  cin>>p>>b;       							// input interval for deletion
 pp  f =make_pair(p,b);
   deleteinterval(root,&f);
   cout<<"("<<p<<","<<b<<") is deleted"<<endl;
-	
+
     int u=0;          							 // Search two interval
     while(u<2)
     {
@@ -159,14 +159,14 @@ pp  f =make_pair(p,b);
 	      if(input==1)
 	      {
 	      		int p,b;
- 			cin>>p>>b;       		
+ 			cin>>p>>b;
 			pp  f =make_pair(p,b);
 		      root=insertnode(root,&f);
 	      }
 	 	if(input==2)
 		{
 			int p,b;
-			 cin>>p>>b;       					
+			 cin>>p>>b;
 			pp  f =make_pair(p,b);
  			 deleteinterval(root,&f);
 			  cout<<"("<<p<<","<<b<<") is deleted"<<endl;
@@ -174,14 +174,14 @@ pp  f =make_pair(p,b);
 	 	 if(input ==3)
 	  	{
 	      		int p,b;
-			  cin>>p>>b;         							 
+			  cin>>p>>b;
 			 pp f =make_pair(p,b);
 			  pp *overlap =searchinterval(root,&f);
 			  if(overlap==0)
 			    cout<<"not found"<<endl;
 			  else
 			 cout<<"("<<p<<","<<b<<") is "<<"interval match  to("<< overlap->first<<","<<overlap->second<<")"<<endl;
-	  
+
 	 	 }
 	}
 
@@ -198,7 +198,7 @@ Input
 5 20
 12 15
 30 40
-15 20                          
+15 20
 14 16
 21 23
 
